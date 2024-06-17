@@ -34,8 +34,19 @@ def get_msg(topic, msg):
         relay1.value(1)
     elif msg==b"r1_off":
         relay1.value(0)
-        state = 0
-
+    elif msg==b"r2_on":
+        relay2.value(1)
+    elif msg==b"r2_off":
+        relay2.value(0)
+    elif msg==b"r3_on":
+        relay3.value(1)
+    elif msg==b"r3_off":
+        relay3.value(0)
+    elif msg==b"r4_on":
+        relay4.value(1)
+    elif msg==b"r4_off":
+        relay4.value(0)
+        
 def heartbeat(x):
     client.publish("heartbeat", "alive")
 
@@ -51,8 +62,7 @@ while True:
         if False:
             client.wait_msg()
         else:
-            client.check_msg()
-            print(relay1.value())
+            client.check_msg()          
             #print(counter)
             #counter = counter + 1
             time.sleep(0.2)
